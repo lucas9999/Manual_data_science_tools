@@ -1,0 +1,22 @@
+bookdown::gitbook:
+  collapse: subsection
+  css: style.css
+  config:
+    toc:
+      collapse: section
+      depth: 4
+      before: |
+        <li><a href="./">Introdution to Python</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
+    download: ["pdf", "epub"]
+    sharing:
+      facebook: yes
+      google: yes
+      linkedin: yes
+      twitter: yes
+      weibo: no
+      vk: no
+      instapper: no
+      

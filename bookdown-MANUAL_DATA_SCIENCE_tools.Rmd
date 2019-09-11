@@ -1,0 +1,24 @@
+--- 
+title: "Introduction to R"
+author: "Łukasz Muszyński"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: ""
+---
+--- 
+title: "Introduction to R"
+author: "Łukasz Muszyński"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: ""
+---
+
+# INTRO
