@@ -1,6 +1,11 @@
 [
-["index.html", "Introduction to Python Chapter 1 INTRO", " Introduction to Python Łukasz Muszyński 2019-09-11 Chapter 1 INTRO About Python "],
-["chapter.html", "Chapter 2 chapter", " Chapter 2 chapter "],
-["chapter-1.html", "Chapter 3 chapter", " Chapter 3 chapter "],
-["intro-1.html", "Chapter 4 INTRO", " Chapter 4 INTRO "]
+["comparison.html", "Manual Data Science Tools Chapter 1 Comparison", " Manual Data Science Tools Łukasz Muszyński 2019-09-15 Chapter 1 Comparison Scikit-Learn vs mlr "],
+["intro.html", "Chapter 2 INTRO", " Chapter 2 INTRO "],
+["python-keras.html", "Chapter 3 Python_Keras", " Chapter 3 Python_Keras "],
+["python-pytorch.html", "Chapter 4 Python_PyTorch", " Chapter 4 Python_PyTorch "],
+["scikit-learn.html", "Chapter 5 Scikit-Learn", " Chapter 5 Scikit-Learn "],
+["python-statmodels.html", "Chapter 6 Python_Statmodels", " Chapter 6 Python_Statmodels "],
+["python-tensofflow.html", "Chapter 7 Python_TensofFlow", " Chapter 7 Python_TensofFlow "],
+["r-mlr.html", "Chapter 8 R_MLR", " Chapter 8 R_MLR "],
+["chapter.html", "Chapter 9 chapter", " Chapter 9 chapter "]
 ]

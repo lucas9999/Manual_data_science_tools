@@ -1,5 +1,5 @@
 --- 
-title: "Introduction to Python"
+title: "Manual Data Science Tools"
 author: "Łukasz Muszyński"
 date: "`r Sys.Date()`"
 output: bookdown::gitbook
@@ -38,6 +38,3 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE, include=TRUE)
 
 
 
-# INTRO
-
-About Python
