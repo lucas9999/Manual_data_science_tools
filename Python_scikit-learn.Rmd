@@ -1,12 +1,92 @@
 # Scikit-Learn
 
-Problem ze zwracaniem prawdopodobienstw w Grid Search:
 
-https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html
 
-W make scoree jest parametr needs_proba i needs_threshold. Popatrzec na to.
 
-Zobaczyć też https://scikit-learn.org/stable/modules/model_evaluation.html#scoring  . Wyszukać fraze "needs_threshold=True" . 
+## Problem ze zwracaniem prawdopodobienstw w Grid Search:
 
-Może być jeszcze potrzebny w samym gridzie parametr "refit".
+Zobaczyć w https://scikit-learn.org/stable/modules/model_evaluation.html#scoring  . Wyszukać fraze "needs_threshold=True" . 
+
+```{python}
+
+
+import pandas as pd
+import sklearn as sk
+import numpy as np
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import RandomizedSearchCV
+from scipy.stats import randint as sp_randint
+from sklearn.metrics import fbeta_score, make_scorer, precision_score, f1_score
+```
+
+Przygotowanie zbioru danych w R
+```{r}
+require(ggplot2)
+df <- diamonds
+```
+
+```{python}
+
+data = r.df
+df = data.head(200)
+np.min(df.price)
+
+# stworzenie sztnucznych zmiennych kategorycznych dla potrzeb modelu
+df['categorical_2_cat'] = list(np.random.choice([0,1], 200)) # 2 kategorie
+df['categorical_3_cat'] = list(np.random.choice([0,1,2], 200)) # 3 kategorie
+
+
+# wlasne funkcja scorowa
+def moje_scory(y, y_pred, threshold = [0.3], parameter = 'precision'):
+
+  # determining decision of the model based on provided threshold
+  y_score = np.array([ 0 if x < threshold else 1   for x in y_pred])
+  
+  if parameter == 'precision':
+    result = precision_score(y, y_score)
+  if parameter == 'f1_score':
+    result = f1_score(y, y_score)
+    
+  return(result)
+
+
+# parametry do tunningu
+param = {"max_depth": [3, None]
+        # , "max_features": sp_randint(1, 11)
+        , "min_samples_split": sp_randint(2, 11)
+        , "bootstrap": [True, False]
+        , "criterion": ["gini", "entropy"]}
+
+
+# okreslenie modelu 
+model = RandomForestClassifier(n_estimators=20)
+
+# ilosc iteracji
+n_iter_search = 10
+
+random_search = RandomizedSearchCV( model
+                                  , param_distributions = param
+                                  , n_iter = n_iter_search
+                                  , cv = 5 # po walidacji krzyzowej beda liczone mean i std dla scorow. Dlatego np. str bedzie policzone nawet jezeli Grid search ma jedna iteracje. 
+                                  , scoring = {  'precision_03':make_scorer(moje_scory, needs_proba = True, threshold = [0.3], parameter = 'precision')
+                                                ,'f1_score_05':make_scorer(moje_scory, needs_proba = True, threshold = [0.5], parameter = 'f1_score')
+                                  
+                                  } , refit =  False) # jezeli do scoingu jest przekazywanych kilka funkcji musimy dac refit = False
+
+
+# wykonanie przeszukania siatki
+result = random_search.fit(X=df[['x','y','z','table']], y=df['categorical_2_cat'])
+
+
+result.cv_results_ # szczelowe wyniki grid-a w postaci slownika
+result.cv_results_.keys() # lista klczy slownika dla ulatwienia wyszkania interesujacych nas informacji
+
+# poszczegolne wyniki scorow
+result.cv_results_['mean_train_precision_03']
+result.cv_results_['mean_train_f1_score_05']
+result.cv_results_['std_train_precision_03']
+result.cv_results_['std_train_f1_score_05']
+
+```
 
