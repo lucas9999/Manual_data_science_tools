@@ -1,4 +1,10 @@
 # Scikit-Learn
 
+Problem ze zwracaniem prawdopodobienstw w Grid Search:
 
+https://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html
+
+W make scoree jest parametr needs_proba i needs_threshold. Popatrzec na to.
+
+Zobaczyć też https://scikit-learn.org/stable/modules/model_evaluation.html#scoring  . Wyszukać fraze "needs_threshold=True" . 
 
