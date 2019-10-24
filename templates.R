@@ -17,7 +17,7 @@ Przykladowy wpis:
 
 
 # Path for git
-C:/Users/memy/OneDrive/Pulpit/1_Programs_and_programing/DATA_SCIENCE_tools/MANUAL_DATA_SCIENCE_tools
+cd C:/Users/memy/OneDrive/Pulpit/1_Programs_and_programing/DATA_SCIENCE_tools/MANUAL_DATA_SCIENCE_tools
 
 
 # Url
